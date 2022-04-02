@@ -20,9 +20,15 @@ def auth():
 
 currentConfig = {}
 timeat = 0
+big_error = False
 
 def on_message(ws, message):
+    global big_error
     payload = json.loads(message)
+    if payload['type'] == "connection_error":
+        big_error = True
+        ws.close()
+        return
     if payload['type'] != "data":
         return
     if payload['payload']['data']['subscribe']['data']['__typename'] == "ConfigurationMessageData":
@@ -72,6 +78,9 @@ if __name__ == "__main__":
                                     on_message=on_message,
                                     on_open=on_open)
             ws.run_forever()
+            if big_error:
+                big_error = False
+                raise "ERROR"
         except:
             auth_token = auth()
             print("ERROR")
