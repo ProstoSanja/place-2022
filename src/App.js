@@ -3,6 +3,7 @@ import Timer from './Timer';
 import githubLogo from './icons/github.svg';
 import redditLogo from './icons/reddit.svg';
 import ethLogo from './icons/eth.svg';
+import linkedinLogo from './icons/linkedin.svg';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <div className="social">
             <button onClick={() => {window.open("https://github.com/ProstoSanja", '_blank').focus();}}><img src={githubLogo}/></button>
             <button onClick={() => {window.open("https://www.reddit.com/user/prosto_sanja", '_blank').focus();}}><img src={redditLogo}/></button>
+            <button onClick={() => {window.open("https://www.linkedin.com/in/prostosanja/", '_blank').focus();}}><img src={linkedinLogo}/></button>
             <button onClick={() => {navigator.clipboard.writeText("0xA9040A0858A9A0292b354456fBF0d54918C3d456"); alert("Copied to clipboard: 0xA9040A0858A9A0292b354456fBF0d54918C3d456");}}><img src={ethLogo}/></button>
           </div>
 
