@@ -4,8 +4,12 @@ import githubLogo from './icons/github.svg';
 import redditLogo from './icons/reddit.svg';
 import ethLogo from './icons/eth.svg';
 import linkedinLogo from './icons/linkedin.svg';
+import { useState } from 'react';
 
 function App() {
+
+  const [visible, setVisible] = useState(false);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -23,9 +27,10 @@ function App() {
             <Timer/>
           </div>
 
-          <div>
+          <div className="button-holder">
             <button onClick={() => {window.open("/36_hours_full.mp4", '_blank').focus();}} className="large-btn">Download latest video (36h)</button>
             <button onClick={() => {window.open("/latest.zip", '_blank').focus();}} className="large-btn">Download raw data (1648942769)</button>
+            <button onClick={() => setVisible(true)} className="large-btn">Projects by others</button>
           </div>
 
           <div className="social">
@@ -40,6 +45,15 @@ function App() {
           </div>
         </div>
       </header>
+        
+      <div className={visible ? "popup visible" : "popup"}  onClick={(e) => e.target.classList.contains("popup") ? setVisible(false) : null} >
+        <div className="popup_inner" onClick={() => setVisible(true)} >
+          
+          <p className={"title"}>Projects by other people</p>
+          <button onClick={() => {window.open("https://place-atlas.stefanocoding.me/", '_blank').focus();}} className="large-btn">r/Place atlas by Roland Rytz</button>
+          
+        </div>
+      </div>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  color: white;
 }
 
 .App-header {
@@ -9,7 +10,6 @@
   flex-direction: row;
   align-items: stretch;
   justify-content: center;
-  color: white;
 }
 
 .title {
@@ -44,6 +44,12 @@ video {
   flex-direction: column;
 }
 
+.button-holder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 button {
   background-color: #282c34;
   border: none;
@@ -62,7 +68,7 @@ button:hover {
 }
 
 .large-btn {
-  width: 80%;
+  width: 90%;
   padding: 15px 32px;
 }
 
@@ -89,4 +95,33 @@ button:hover {
   text-align: center;
   color: #bbbbbb;
   margin: 0px auto;
+}
+
+
+.popup {
+  z-index: 110;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 200ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.popup.visible {
+  visibility: visible;
+  opacity: 1;
+  cursor: initial;
+}
+
+.popup_inner {
+  margin: 70px auto;
+  padding: 20px;
+  background: #3d4148;
+  border-radius: 5px;
+  max-width: 450px;
+  position: relative;
+  /* transition: all 5s ease-in-out; */
 }

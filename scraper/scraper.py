@@ -10,10 +10,10 @@ import authparams
 
 auth_token = authparams.AUTH_TOKEN
 def auth():
-    r = requests.post(f'https://www.reddit.com/api/v1/access_token?grant_type=password&username={authparams.USERNAME}&password={authparams.PASSWORD}',
-                  auth=HTTPBasicAuth(authparams.OAUTH_CLIENT, authparams.OAUTH_SECRET))
-    auth_response = json.loads(r.text)
     try:
+        r = requests.post(f'https://www.reddit.com/api/v1/access_token?grant_type=password&username={authparams.USERNAME}&password={authparams.PASSWORD}',
+                    auth=HTTPBasicAuth(authparams.OAUTH_CLIENT, authparams.OAUTH_SECRET))
+        auth_response = json.loads(r.text)
         return auth_response['access_token']
     except:
         return auth_token
