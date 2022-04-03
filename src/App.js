@@ -24,15 +24,15 @@ function App() {
           </div>
 
           <div>
-            <button onClick={() => {window.open("/24_hours.mp4", '_blank').focus();}} className="large-btn">Download latest video</button>
-            <button onClick={() => {window.open("/latest.zip", '_blank').focus();}} className="large-btn">Download raw data</button>
+            <button onClick={() => {window.open("/36_hours_full.mp4", '_blank').focus();}} className="large-btn">Download latest video (36h)</button>
+            <button onClick={() => {window.open("/latest.zip", '_blank').focus();}} className="large-btn">Download raw data (1648942769)</button>
           </div>
 
           <div className="social">
-            <button onClick={() => {window.open("https://github.com/ProstoSanja", '_blank').focus();}}><img src={githubLogo}/></button>
-            <button onClick={() => {window.open("https://www.reddit.com/user/prosto_sanja", '_blank').focus();}}><img src={redditLogo}/></button>
-            <button onClick={() => {window.open("https://www.linkedin.com/in/prostosanja/", '_blank').focus();}}><img src={linkedinLogo}/></button>
-            <button onClick={() => {navigator.clipboard.writeText("0xA9040A0858A9A0292b354456fBF0d54918C3d456"); alert("Copied to clipboard: 0xA9040A0858A9A0292b354456fBF0d54918C3d456");}}><img src={ethLogo}/></button>
+            <button onClick={() => {window.open("https://github.com/ProstoSanja/place-2022", '_blank').focus();}}><img alt="github link" src={githubLogo}/></button>
+            <button onClick={() => {window.open("https://www.reddit.com/user/prosto_sanja", '_blank').focus();}}><img alt="reddit link" src={redditLogo}/></button>
+            <button onClick={() => {window.open("https://www.linkedin.com/in/prostosanja/", '_blank').focus();}}><img alt="linkedin link" src={linkedinLogo}/></button>
+            <button onClick={() => {navigator.clipboard.writeText("0xA9040A0858A9A0292b354456fBF0d54918C3d456"); alert("Copied to clipboard: 0xA9040A0858A9A0292b354456fBF0d54918C3d456");}}><img alt="ethereum link" src={ethLogo}/></button>
           </div>
 
           <div>
