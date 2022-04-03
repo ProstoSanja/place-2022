@@ -63,7 +63,7 @@ function App() {
         <div className="popup_inner">
           
           <p className={"title"}>Projects by other people</p>
-          <button onClick={() => {window.open("https://place-atlas.stefanocoding.me/", '_blank').focus();}} className="large-btn">r/Place atlas by Roland Rytz</button>
+          <button onClick={() => {window.open("https://place-atlas.stefanocoding.me/", '_blank').focus();}} className="large-btn">r/Place atlas by Stefano Haagmans</button>
           <button onClick={() => {setVisible(false)}} className="large-btn">Close</button>
         </div>
       </div>
