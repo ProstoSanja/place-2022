@@ -64,6 +64,7 @@ function App() {
           
           <p className={"title"}>Projects by other people</p>
           <button onClick={() => {window.open("https://place-atlas.stefanocoding.me/", '_blank').focus();}} className="large-btn">r/Place atlas by Stefano Haagmans</button>
+          <button onClick={() => {window.open("/heatmap_36h.mp4", '_blank').focus();}} className="large-btn">r/Place heatmap by u/DeathByElectives</button>
           <button onClick={() => {setVisible(false)}} className="large-btn">Close</button>
         </div>
       </div>
