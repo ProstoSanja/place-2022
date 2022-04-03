@@ -4,11 +4,24 @@ import githubLogo from './icons/github.svg';
 import redditLogo from './icons/reddit.svg';
 import ethLogo from './icons/eth.svg';
 import linkedinLogo from './icons/linkedin.svg';
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 function App() {
 
   const [visible, setVisible] = useState(false);
+  const escFunction = useCallback((event) => {
+    if (event.key === "Escape") {
+      setVisible(false)
+    }
+  }, []);
+
+  useEffect(() => {
+    document.addEventListener("keydown", escFunction, false);
+
+    return () => {
+      document.removeEventListener("keydown", escFunction, false);
+    };
+  }, [escFunction]);
 
   return (
     <div className="App">
@@ -28,7 +41,7 @@ function App() {
           </div>
 
           <div className="button-holder">
-            <button onClick={() => {window.open("/36_hours_full.mp4", '_blank').focus();}} className="large-btn">Download latest video (36h)</button>
+            <button onClick={() => {window.open("/48_hours_full.mp4", '_blank').focus();}} className="large-btn">Download latest video (48h)</button>
             <button onClick={() => {window.open("/latest.zip", '_blank').focus();}} className="large-btn">Download raw data (1648942769)</button>
             <button onClick={() => setVisible(true)} className="large-btn">Projects by others</button>
           </div>
@@ -47,11 +60,11 @@ function App() {
       </header>
         
       <div className={visible ? "popup visible" : "popup"}  onClick={(e) => e.target.classList.contains("popup") ? setVisible(false) : null} >
-        <div className="popup_inner" onClick={() => setVisible(true)} >
+        <div className="popup_inner">
           
           <p className={"title"}>Projects by other people</p>
           <button onClick={() => {window.open("https://place-atlas.stefanocoding.me/", '_blank').focus();}} className="large-btn">r/Place atlas by Roland Rytz</button>
-          
+          <button onClick={() => {setVisible(false)}} className="large-btn">Close</button>
         </div>
       </div>
     </div>
