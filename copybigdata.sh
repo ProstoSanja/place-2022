@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for i in *.*
+for i in "./../bigdata"/*.*
 do
-    cp -f $i ./../bigdata/$i ./build/$i
+    cp -f ./../bigdata/$(basename $i) ./build/$(basename $i)
 done
