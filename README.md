@@ -6,8 +6,6 @@ This project is live at [place.thatguyalex.com](https://place.thatguyalex.com).
 
 - Install Python and all dependencies from `scraper.py` imports
 
-- (if you want to create a requirements.txt, please make a PR and i'll merge it)
-
 - Edit `authparams.py` with your reddit username and password, and then add an oauth app of type `script` 
 
 - Field `AUTH_TOKEN` can be left empty, it is used for manual overrides
