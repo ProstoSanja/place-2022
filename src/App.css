@@ -27,6 +27,7 @@ video {
   min-width: 100vw;
   left: 0;
   align-self: center;
+  image-rendering: crisp-edges;
 }
 
 .anti-overlay {
