@@ -41,7 +41,7 @@ function App() {
           </div>
 
           <div className="button-holder">
-            <button onClick={() => {window.open("/final_v1.mp4", '_blank').focus();}} className="large-btn">Download latest video (final v1)</button>
+            <button onClick={() => {window.open("https://youtu.be/29giASnhAa8", '_blank').focus();}} className="large-btn">Latest video</button>
             <button onClick={() => {window.open("/final_v1.zip", '_blank').focus();}} className="large-btn">Download raw data (final v1)</button>
             <button onClick={() => setVisible(true)} className="large-btn">Projects by others</button>
           </div>
