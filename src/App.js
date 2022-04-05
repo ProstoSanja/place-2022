@@ -27,7 +27,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <video poster="" id="bgvid" playsInline autoPlay muted loop>
-          <source src="24_hours.mp4" type="video/mp4"/>
+          <source src="preview.webm" type="video/webm"/>
         </video>
         <div className='anti-overlay'>
           
