@@ -25,4 +25,8 @@ yarn-error.log*
 GTEestiProDisplay-Regular.ttf
 
 .pyc
-__pycache__
+
+# Environments
+env/
+venv/
+ENV/
