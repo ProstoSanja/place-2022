@@ -18,7 +18,7 @@ This project is live at [place.thatguyalex.com](https://place.thatguyalex.com).
 
 - Install nodejs and NPM
 
-- Run `npm start`
+- Run `npm install` and then `npm start`
 
 - Open [http://localhost:3000](http://localhost:3000)
 
