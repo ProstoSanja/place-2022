@@ -37,7 +37,7 @@ function App() {
 
           <div>
             <p>The reddit community has been drawing on the canvas for:</p>
-            <Timer/>
+            <p>3 days and 12 hours</p>
           </div>
 
           <div className="button-holder">
