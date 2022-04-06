@@ -16,8 +16,11 @@ jobs:
           npm ci
           npm run build
 
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@v4.3.0
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          branch: main
-          folder: .
+          cname: place.thatguyalex.com
+          personal_token: ${{ secrets.PERSONAL_TOKEN }}
+          external_repository: ProstoSanja/ProstoSanja.github.io
+          publish_branch: main
+          publish_dir: .
