@@ -1,5 +1,5 @@
 import './App.css';
-import Timer from './Timer';
+// import Timer from './Timer';
 import githubLogo from './icons/github.svg';
 import redditLogo from './icons/reddit.svg';
 import ethLogo from './icons/eth.svg';
