@@ -42,7 +42,7 @@ function App() {
 
           <div className="button-holder">
             <button onClick={() => {window.open("https://youtu.be/29giASnhAa8", '_blank').focus();}} className="large-btn">Latest video</button>
-            <button onClick={() => {window.open("/final_v1.zip", '_blank').focus();}} className="large-btn">Download raw data (final v1)</button>
+            <button onClick={() => {window.open("/final_v1.torrent", '_blank').focus();}} className="large-btn">Download raw data (final v1)</button>
             <button onClick={() => setVisible(true)} className="large-btn">Projects by others</button>
           </div>
 
@@ -64,7 +64,7 @@ function App() {
           
           <p className={"title"}>Projects by other people</p>
           <button onClick={() => {window.open("https://place-atlas.stefanocoding.me/", '_blank').focus();}} className="large-btn">r/Place atlas by Stefano Haagmans</button>
-          <button onClick={() => {window.open("/heatmap_full.mp4", '_blank').focus();}} className="large-btn">r/Place heatmap by u/DeathByElectives</button>
+          <button onClick={() => {window.open("https://www.reddit.com/r/dataisbeautiful/comments/tx1siv/oc_animated_heat_map_of_rplace_full/", '_blank').focus();}} className="large-btn">r/Place heatmap by u/DeathByElectives</button>
           <button onClick={() => {window.open("https://www.youtube.com/watch?v=jO1st_gpk50", '_blank').focus();}} className="large-btn">r/Place delta heatmap by u/Nuyube</button>
           <button onClick={() => {window.open("https://rplace.space/", '_blank').focus();}} className="large-btn">r/Place constantly updating timelapse by u/risson67</button>
           <p>Parts of missing data provided by u/moody_puffin</p>
