@@ -67,6 +67,7 @@ function App() {
           <button onClick={() => {window.open("https://www.reddit.com/r/dataisbeautiful/comments/tx1siv/oc_animated_heat_map_of_rplace_full/", '_blank').focus();}} className="large-btn">r/Place heatmap by u/DeathByElectives</button>
           <button onClick={() => {window.open("https://www.youtube.com/watch?v=jO1st_gpk50", '_blank').focus();}} className="large-btn">r/Place delta heatmap by u/Nuyube</button>
           <button onClick={() => {window.open("https://rplace.space/", '_blank').focus();}} className="large-btn">r/Place constantly updating timelapse by u/risson67</button>
+          <button onClick={() => {window.open("https://github.com/gislerro/rplace-cropped-timelapse-creator", '_blank').focus();}} className="large-btn">r/Place cropped timelapse generator by u/blackkswann</button>
           <p>Parts of missing data provided by u/moody_puffin</p>
           <button onClick={() => {setVisible(false)}} className="large-btn">Close</button>
         </div>
