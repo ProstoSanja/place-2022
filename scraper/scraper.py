@@ -98,9 +98,13 @@ if __name__ == "__main__":
             ws.run_forever()
             if big_error:
                 big_error = False
-                raise "ERROR"
+                raise "BIG ERROR"
         except Exception as ex:
             auth_token = auth()
             print("ERROR")
+            print(str(ex))
+        except:
+            print("BIG ERROR")
+
 
         time.sleep(30)
