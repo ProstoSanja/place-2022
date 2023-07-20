@@ -34,16 +34,34 @@ def on_message(ws, message):
     if payload['payload']['data']['subscribe']['data']['__typename'] == "ConfigurationMessageData":
         messageIndex = 2
         canvasConfig = payload['payload']['data']['subscribe']['data']['canvasConfigurations']
+        canvasHeight = payload['payload']['data']['subscribe']['data']['canvasHeight']
+        canvasWidth = payload['payload']['data']['subscribe']['data']['canvasWidth']
+        activeZoneRaw = payload['payload']['data']['subscribe']['data']['activeZone']
+        activeZone = {
+            "startX": activeZoneRaw['topLeft']['x'],
+            "startY": activeZoneRaw['topLeft']['y'],
+            "endX": activeZoneRaw['bottomRight']['x'],
+            "endY": activeZoneRaw['bottomRight']['y']
+        }
         for configItem in canvasConfig:
             if configItem['__typename'] == "CanvasConfiguration":
                 itemIndex = configItem['index']
                 currentConfig[itemIndex] = {
                     "url": None,
                     "completed": False,
+                    "startX": configItem['dx'],
+                    "startY": configItem['dy'],
+                    "endX": configItem['dx'] + canvasWidth,
+                    "endY": configItem['dy'] + canvasHeight
                 }
+                if (currentConfig[itemIndex]["endX"] <= activeZone["startX"] or currentConfig[itemIndex]["startX"] >= activeZone["endX"]):
+                    currentConfig[itemIndex]['completed'] = True
+                if (currentConfig[itemIndex]["endY"] <= activeZone["startY"] or currentConfig[itemIndex]["startY"] >= activeZone["endY"]):
+                    currentConfig[itemIndex]['completed'] = True
         for index in currentConfig.keys():
-            ws.send('{"id":"' + str(messageIndex) + '","type":"start","payload":{"variables":{"input":{"channel":{"teamOwner":"AFD2022","category":"CANVAS","tag":"' + str(index) +'"}}},"extensions":{},"operationName":"replace","query":"subscription replace($input:SubscribeInput!){subscribe(input:$input){id...on BasicMessage{data{__typename...on FullFrameMessageData{__typename name timestamp}...on DiffFrameMessageData{__typename name currentTimestamp previousTimestamp}}__typename}__typename}}"}}')
-            messageIndex += 1
+            if (not currentConfig[index]['completed']):
+                ws.send('{"id":"' + str(messageIndex) + '","type":"start","payload":{"variables":{"input":{"channel":{"teamOwner":"GARLICBREAD","category":"CANVAS","tag":"' + str(index) +'"}}},"extensions":{},"operationName":"replace","query":"subscription replace($input:SubscribeInput!){subscribe(input:$input){id...on BasicMessage{data{__typename...on FullFrameMessageData{__typename name timestamp}...on DiffFrameMessageData{__typename name currentTimestamp previousTimestamp}}__typename}__typename}}"}}')
+                messageIndex += 1
 
     if payload['payload']['data']['subscribe']['data']['__typename'] == "FullFrameMessageData":
         url = payload['payload']['data']['subscribe']['data']['name']
@@ -53,7 +71,7 @@ def on_message(ws, message):
 
 def fetchImageFromUrl(url, index, ws):
     response = requests.get(url)
-    filename = "images\\" + str(index) + "-" + str(timeat) + '.png'
+    filename = "images2/" + str(index) + "-" + str(timeat) + '.png'
     open(os.path.join(os.path.dirname(__file__), filename), 'wb').write(response.content)
     currentConfig[index]['completed'] = True
     print(f'Fetched {str(index)}', end=' ')
@@ -67,7 +85,7 @@ def fetchImageFromUrl(url, index, ws):
 
 def on_open(ws):
     ws.send('{"type":"connection_init","payload":{"Authorization":"Bearer ' + auth_token + '"}}')
-    ws.send('{"id":"1","type":"start","payload":{"variables":{"input":{"channel":{"teamOwner":"AFD2022","category":"CONFIG"}}},"extensions":{},"operationName":"configuration","query":"subscription configuration($input:SubscribeInput!){subscribe(input:$input){id...on BasicMessage{data{__typename...on ConfigurationMessageData{colorPalette{colors{hex index __typename}__typename}canvasConfigurations{index dx dy __typename}canvasWidth canvasHeight __typename}}__typename}__typename}}"}}')
+    ws.send('{"id":"1","type":"start","payload":{"variables":{"input":{"channel":{"teamOwner":"GARLICBREAD","category":"CONFIG"}}},"extensions":{},"operationName":"configuration","query":"subscription configuration($input:SubscribeInput!){subscribe(input:$input){id...on BasicMessage{data{__typename...on ConfigurationMessageData{colorPalette{colors{hex index __typename}__typename}canvasConfigurations{index dx dy __typename}activeZone{topLeft{x y __typename}bottomRight{ x y __typename} __typename}canvasWidth canvasHeight __typename}}__typename}__typename}}"}}')
 
 if __name__ == "__main__":
     while True:
@@ -81,7 +99,7 @@ if __name__ == "__main__":
             if big_error:
                 big_error = False
                 raise "ERROR"
-        except:
+        except Exception as ex:
             auth_token = auth()
             print("ERROR")
 
